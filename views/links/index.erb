@@ -5,6 +5,9 @@
     <li>
       <h2> Title: <%= link.title %>
       <h2> URL:   <%= link.url %>
+      <% my_array = [] %>
+      <% link.tags.each {|x| my_array << x.name} %>
+      <h2> Tag: <%= my_array.join(' ') %> </h2>
     </li>
   <% end %>
-</ul> 
+</ul>
