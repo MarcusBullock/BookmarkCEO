@@ -24,8 +24,7 @@ feature 'Viewing links' do
     within 'ul#links' do
       expect(page).not_to have_content('news')
       expect(page).not_to have_content('search')
-      expect(page).not_to have_content('bubbles')
-      expect(page).not_to have_content('bubbles')
+      expect(page).to have_content('bubbles')
     end
   end
 end
