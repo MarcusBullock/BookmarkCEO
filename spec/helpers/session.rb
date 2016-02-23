@@ -19,4 +19,5 @@ module SessionHelpers
    click_button 'Sign up'
  end
 
+
 end
