@@ -12,6 +12,8 @@ class Bookmark < Sinatra::Base
 
   register Sinatra::Flash
 
+  use Rack::MethodOverride
+
   helpers do
    def current_user
      @current_user ||= User.get(session[:user_id])
@@ -79,8 +81,13 @@ class Bookmark < Sinatra::Base
       flash.now[:errors] = ['The email or password is incorrect']
       erb :'sessions/new'
     end
-  end 
+  end
 
+  delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye!'
+    redirect to ('/links')
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
